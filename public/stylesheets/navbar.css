@@ -1,12 +1,60 @@
 nav{
     display: flex;
     align-items:center;
-    height: 40px;
+    height: 50px;
     padding: 10px;
+    justify-content: space-around;
+    border-bottom: 1px solid rgb(197,213,264);
 }
-ul{
+nav a{
+    text-decoration: none;
+    color: rgb(197,213,264);
+}
+#logo>h2>a{
+    color: rgb(60,136,126);
+    cursor: pointer;
+}
+#logo > h2>a:hover{
+   color: rgb(57, 124, 115);
+}
+nav ul{
     display: flex;
+    gap: 50px;
+    font-size: 20px;
 }
-li{
+nav ul li{
     list-style: none;
+    cursor: pointer;
+}
+nav ul li>a:hover{
+    color:rgb(60,136,126);
+}
+#nav-search{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+#search-input{
+    background: none;
+    border:1px solid rgb(197,213,264);
+    padding: 5px;
+    border-radius: 5px;
+    outline: none;
+    color: rgb(197,213,264);
+}
+#search-input::placeholder{
+    color: rgb(197,213,264);
+}
+#search-btn{
+    background: none;
+    border:1px solid rgb(197,213,264);
+    padding: 5px;
+    border-radius: 5px;
+    color: rgb(197,213,264);
+    background-color: rgb(60,136,126);
+    cursor: pointer;
+}
+#search-btn:hover{
+    background-color: rgb(57, 124, 115);
 }

@@ -1,15 +1,20 @@
-
-<header>
+<?php
+echo '<header>
     <nav>
         <div id="logo">
-            <h2>PuchLe</h2>
+            <h2><a href="">PuchhLe</a></h2>
         </div>
         <div id="nav-items">
             <ul>
-                <li>Categories</li>
-                <li>About Us</li>
-                <li>Contact Us</li>
+                <li><a href="">Categories</a></li>
+                <li><a href="">About Us</a></li>
+                <li><a href="">Contact Us</a></li>
             </ul>
         </div>
+        <div id="nav-search">
+            <input id="search-input" type="text" placeholder="Search">
+            <button id="search-btn">Search</button>
+        </div>
     </nav>
-</header>
+</header>';
+?>

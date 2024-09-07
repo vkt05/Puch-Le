@@ -1,5 +1,83 @@
-*{
-    margin: 0px;
-    padding: 0px;
-    box-sizing: border-box;
+.section {
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.ani-image-what {
+    height: 750px;
+    width: 350px;
+    overflow: hidden;
+    position: relative;
+    left: 100px;
+}
+
+.ani-image-what::before {
+    content: "";
+    position: absolute;
+    height: 120px;
+    background-color: rgb(197, 213, 264);
+    width: 120px;
+    left: 120px;
+    top: 120px;
+    border-radius: 100%;
+    filter: blur(20px);
+}
+
+.ani-image-what::after {
+    content: "";
+    position: absolute;
+    height: 120px;
+    background-color: rgb(60, 136, 126);
+    width: 120px;
+    right: 50px;
+    bottom: 50px;
+    border-radius: 30%;
+    filter: blur(20px);
+}
+
+#what-img {
+    position: relative;
+    z-index: 1;
+}
+
+.text-wrap {
+    width: 620px;
+    height: fit-content;
+    font-size: xx-large;
+    text-align: center;
+}
+
+#how-img {
+    position: relative;
+    z-index: 1;
+}
+
+.ani-image-how::before {
+    content: "";
+    height: 120px;
+    width: 120px;
+    background-color: rgb(197, 213, 264);
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(20px);
+    top: 60px;
+    right: 760px;
+}
+
+.ani-image-how::after {
+    content: "";
+    height: 120px;
+    width: 120px;
+    background-color: rgb(60, 136, 126);
+    position: absolute;
+    bottom: 70px;
+    right: 130px;
+    border-radius: 30%;
+    filter: blur(20px);
+}
+ol li{
+    list-style:inside;
+    text-align: center;
 }
