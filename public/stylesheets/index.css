@@ -53,6 +53,9 @@
     position: relative;
     z-index: 1;
 }
+.ani-image-how{
+    position: relative;
+}
 
 .ani-image-how::before {
     content: "";
@@ -63,7 +66,6 @@
     border-radius: 50%;
     filter: blur(20px);
     top: 60px;
-    right: 760px;
 }
 
 .ani-image-how::after {
@@ -73,11 +75,11 @@
     background-color: rgb(60, 136, 126);
     position: absolute;
     bottom: 70px;
-    right: 130px;
+    right: 35px;
     border-radius: 30%;
     filter: blur(20px);
 }
 ol li{
     list-style:inside;
-    text-align: center;
+    text-align: left;
 }
