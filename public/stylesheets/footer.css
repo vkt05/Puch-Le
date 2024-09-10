@@ -1,9 +1,8 @@
 footer{
     position: relative;
-    margin-top: 55px;
-    bottom: -263px;
+    bottom: 0px;
+    width: 100%;
 }
-
 #footer{
     height: 50px;
     display: flex;

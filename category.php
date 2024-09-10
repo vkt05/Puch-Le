@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="./public/stylesheets/footer.css">
 </head>
 <body>
-    what the fuc#k is happening
+    <?php include './partials/_navbar.php';?>
+    <?php include './partials/_footer.php';?>
 </body>
 </html>

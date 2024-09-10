@@ -7,8 +7,8 @@ echo '<header>
         <div id="nav-items">
             <ul>
                 <li><a href="/PuchLe/categories.php">Categories</a></li>
-                <li><a href="">About Us</a></li>
-                <li><a href="">Contact Us</a></li>
+                <li><a href="/PuchLe/about.php">About Us</a></li>
+                <li><a href="/PuchLe/contact.php">Contact Us</a></li>
             </ul>
         </div>
         <div id="nav-search">

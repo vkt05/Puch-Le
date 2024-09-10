@@ -34,7 +34,7 @@ $connectionErr = false;
                       <img src="'.$row['category_img'].'" alt="image">
                   </div>
                   <h2>'.$row['category_name'].'</h2>
-                  <button class="lets-go"><a href="/PuchLe/thread.php/?category_name='.$row['category_name'].'&category_id='.$row['category_id'].'">Let\'s Go</a></button>
+                  <button class="lets-go"><a href="/PuchLe/category.php?category_name='.$row['category_name'].'&category_id='.$row['category_id'].'">Let\'s Go</a></button>
               </div>';
                 }
             } else {

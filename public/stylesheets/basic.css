@@ -9,6 +9,7 @@
 body{
     background-color: rgb(50,67,118);
     color:  rgb(197,213,264);
+    height: 100vh;
 }
 ::-webkit-scrollbar-thumb{
     background: rgba(197,213,264,0.5);
