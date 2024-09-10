@@ -1,5 +1,11 @@
+<?php
+include './partials/_connection.php';
+$connectionErr = false;
+
+?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,76 +15,38 @@
     <link rel="stylesheet" href="./public/stylesheets/footer.css">
     <link rel="stylesheet" href="./public/stylesheets/categories.css">
 </head>
+
 <body>
     <div id="cat-body-wrap">
-    <?php
+        <?php
         include './partials/_navbar.php';
-    ?>
-    <div id="categories-wrapper">
+        ?>
+        <div id="categories-wrapper">
 
-        <div class="category">
-            <div class="img">
-                <img src="" alt="image">
-            </div>
-            <h2>title</h2>
-            <button>go to</button>
-        </div>
+            <?php
+            if ($connect) {
+                $sql = "select * from categories";
+                $query = mysqli_query($connect, $sql);
+                while ($row = mysqli_fetch_assoc($query)) {
 
-        <div class="category">
-            <div class="img">
-                <img src="" alt="image">
-            </div>
-            <h2>title</h2>
-            <button>go to</button>
-        </div>
+                    echo ' <div class="category">
+                  <div class="img">
+                      <img src="'.$row['category_img'].'" alt="image">
+                  </div>
+                  <h2>'.$row['category_name'].'</h2>
+                  <button class="lets-go"><a href="/PuchLe/thread.php/?category_name='.$row['category_name'].'&category_id='.$row['category_id'].'">Let\'s Go</a></button>
+              </div>';
+                }
+            } else {
+                echo "connection problem try again later.";
+            }
+            ?>
 
-        <div class="category">
-            <div class="img">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png" alt="image">
-            </div>
-            <h2>title</h2>
-            <button>go to</button>
         </div>
-
-        <div class="category">
-            <div class="img">
-                <img src="" alt="image">
-            </div>
-            <h2>title</h2>
-            <button>go to</button>
-        </div>
-        <div class="category">
-            <div class="img">
-                <img src="" alt="image">
-            </div>
-            <h2>title</h2>
-            <button>go to</button>
-        </div>
-        <div class="category">
-            <div class="img">
-                <img src="" alt="image">
-            </div>
-            <h2>title</h2>
-            <button>go to</button>
-        </div>
-        <div class="category">
-            <div class="img">
-                <img src="" alt="image">
-            </div>
-            <h2>title</h2>
-            <button>go to</button>
-        </div>
-        <div class="category">
-            <div class="img">
-                <img src="" alt="image">
-            </div>
-            <h2>title</h2>
-            <button>go to</button>
-        </div>
-    </div>
-    <?php
+        <?php
         include './partials/_footer.php';
-    ?>
+        ?>
     </div>
 </body>
+
 </html>

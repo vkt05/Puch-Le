@@ -6,7 +6,7 @@ echo '<header>
         </div>
         <div id="nav-items">
             <ul>
-                <li><a href="./categories.php">Categories</a></li>
+                <li><a href="/PuchLe/categories.php">Categories</a></li>
                 <li><a href="">About Us</a></li>
                 <li><a href="">Contact Us</a></li>
             </ul>

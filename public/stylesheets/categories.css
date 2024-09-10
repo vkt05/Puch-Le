@@ -17,7 +17,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 10px;
+    gap: 30px;
     padding: 15px;
     height: 350px;
     width: 250px;
@@ -34,9 +34,9 @@
 img{
     height: 100%;
     width: 100%;
-    object-fit: cover;
+    object-fit: contain;
 }
-button{
+.lets-go{
     height: 10%;
     width: 50%;
     background-color:rgb(60,136,126);
@@ -47,6 +47,11 @@ button{
     border-radius: 5px;
     outline: none;
 }
-button:hover{
+.lets-go a{
+    text-decoration: none;
+    color: rgb(197,213,264);
+}
+.lets-go:hover{
     background-color:rgb(57, 124, 115);
+    cursor: pointer;
 }
