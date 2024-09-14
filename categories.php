@@ -26,7 +26,9 @@ $connectionErr = false;
             <?php
             if ($connect) {
                 $sql = "select * from categories";
+                
                 $query = mysqli_query($connect, $sql);
+
                 while ($row = mysqli_fetch_assoc($query)) {
 
                     echo ' <div class="category">
