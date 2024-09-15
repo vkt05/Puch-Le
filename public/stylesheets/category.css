@@ -62,3 +62,39 @@ form{
 label{
     font-size: 30px;
 }
+.question-wrap{
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    margin: 25px 0px;
+}
+.question-wrap img{
+    padding: 10px;
+    border: 2px solid black;
+    border-radius: 50%;
+}
+.user-question-wrap{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 100%;
+}
+.question{
+    width: 50%;
+}
+.user-wrap{
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+.user-wrap h3{
+    color: rgb(60,136,126);
+}
+.question-a{
+    width: 100%;
+    text-decoration: none;
+    color: rgb(197,213,264);
+}
+.question-a:hover{
+    color: rgb(60,136,126);
+}

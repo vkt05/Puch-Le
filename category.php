@@ -37,55 +37,76 @@ include './partials/_connection.php';
                                         <p>' . $row['category_description'] . '</p>
                                 </div>';
                     }
-                    
-                } 
-                else {
+                } else {
                     echo 'unable to run cat name query';
                 }
 
                 $sql_question = 'select * from questions where category_id=' . $category_id;
+
                 $query_question = mysqli_query($connect, $sql_question);
-                
-               if ($query_question) {
 
-                $num_row=mysqli_num_rows($query_question);
+                if ($query_question) {
 
-                 if ($num_row>0) {
-                    echo'<div class="ask-question">
+                    $num_row = mysqli_num_rows($query_question);
+
+                    if ($num_row > 0) {
+                        echo '<div class="ask-question">
                             <form action="./category.php" method="post">
                                 <label for="question-area">Ask Question</label>
                                 <textarea name="question-area" id="question-area" placeholder="Enter your question here."></textarea>
                                 <button type="submit" class="question-ask-btn">Ask</button>
                             </form>
                         </div>';
-                    while ($data=mysqli_fetch_assoc($query_question)) {
-                        echo'   <div class="question-wrap">
+                        while ($data = mysqli_fetch_assoc($query_question)) {
 
-                                </div>';
+                            $date_of_asked=$data['date_of_asked'];
+                            $question=$data['question'];
+                            $question_id=$data['question_id'];
+
+                            $user_sql='select * from users where user_id='.$data['user_id'];
+
+                            $user_query=mysqli_query($connect,$user_sql);
+
+                            if ($user_query) {
+
+                                $user_data=mysqli_fetch_assoc($user_query);
+                                $user_fname = $user_data['first_name'];
+                                $user_lname = $user_data['last_name'];
+
+                                echo '   <div class="question-wrap">
+                                        <img src="./public/images/profile_default.svg" alt="profile-pic">
+                                        <div class="user-question-wrap">
+                                            <div class="user-wrap">
+                                                <h3>'.$user_fname.' '.$user_lname.'</h3>
+                                                <p>'.$date_of_asked.'</p>
+                                            </div>
+                                            <p class="question"><a class="question-a" href="./question?ques_id='.$question_id.'">'.$question.'</a></p>
+                                        </div>
+                                    </div>';
+                            }
+                            else {
+                                echo 'facing some problem in fetchting questions from server please try again later.';
+                            }
+
+                        }
+                    } else {
+                        echo '<div class="ask-question">
+                            <form action="./category.php" method="post">
+                                <label for="question-area">Ask Question</label>
+                                <textarea name="question-area" id="question-area" placeholder="Enter your question here."></textarea>
+                                <button type="submit" class="question-ask-btn">Ask</button>
+                            </form>
+                        </div>';
+                        echo '<h2>No question : Be the one to ask</h2>';
                     }
-                 }
-                 else{
-                    echo'<div class="ask-question">
-                            <form action="./category.php" method="post">
-                                <label for="question-area">Ask Question</label>
-                                <textarea name="question-area" id="question-area" placeholder="Enter your question here."></textarea>
-                                <button type="submit" class="question-ask-btn">Ask</button>
-                            </form>
-                        </div>';
-                    echo'<h2>No question : Be the one to ask</h2>';
-                 }
-
-               }
-               else {
-                echo'question fetchiunf failed';
-               }
-            }
-            else {
+                } else {
+                    echo 'question fetchiunf failed';
+                }
+            } else {
                 echo 'sorry unable to connect.';
             }
             ?>
 
-            
         </div>
         <?php include './partials/_footer.php'; ?>
     </div>
