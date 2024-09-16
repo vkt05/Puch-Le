@@ -1,23 +1,32 @@
-#contact-wrap{
+.stop{
+    color: rgb(190, 25, 25);
+}
+.go{
+    color: rgb(14, 136, 14);
+}
+.wait{
+    color: rgb(201, 168, 21);
+}
+#login-signup-wrap{
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
-.contact{
+h1{
+  color:rgb(60,136,126) ;  
+}
+.login-signup{
     width: 40%;
     margin: auto;
     display: flex;
     justify-content: center;
-    height: 70%;
+    height: 80%;
     padding: 20px;
     border: 5px solid  rgb(197,213,264);
     border-radius: 10px;
     align-items: center;
 }
-h1{
-    color:rgb(60,136,126) ;  
-  }
 .form-wrap{
     height: 100%;
     width: 80%;
@@ -35,7 +44,7 @@ form{
     height: 100%;
     width: 100%;
 }
-.contact-input{
+.login-signup-input{
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -43,7 +52,7 @@ form{
     align-items: center;
     gap: 5px;
 }
-.contact-textarea{
+.login-signup-textarea{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -51,7 +60,7 @@ form{
     gap: 5px;
     width: 100%;
 }
-#contact-email{
+#login-signup-email{
     width: 100%;
     padding: 10px;
     font-size: 18px;
@@ -61,7 +70,7 @@ form{
     color: rgb(197,213,264);
     background: transparent;
 }
-#contact-textarea{
+#login-signup-textarea{
     width: 100%;
     padding: 10px;
     font-size: 18px;
@@ -75,7 +84,7 @@ form{
 label{
     font-size: 20px;
 }
-.contact-send{
+.login-signup-send{
     height: 10%;
     width: 50%;
     background-color:rgb(60,136,126);
@@ -86,11 +95,11 @@ label{
     border-radius: 5px;
     outline: none;
 }
-.contact-send a{
+.login-signup-send a{
     text-decoration: none;
     color: rgb(197,213,264);
 }
-.contact-send:hover{
+.login-signup-send:hover{
     background-color:rgb(57, 124, 115);
     cursor: pointer;
 }

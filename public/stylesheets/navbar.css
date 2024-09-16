@@ -58,3 +58,35 @@ nav ul li>a:hover{
 #search-btn:hover{
     background-color: rgb(57, 124, 115);
 }
+.login-sign-nav-btn{
+    list-style: none;
+    display: flex;
+    gap: 10px;
+    margin: 20px 0px;
+}
+.login-sign-nav-btn button{
+    height: 30px;
+    width: 90px;
+    background-color: rgb(60, 136, 126);
+    border: none;
+    outline: none;
+    border-radius: 5px;
+}
+.login-sign-nav-btn button:hover{
+    border: 2px solid rgb(60, 136, 126);
+    background-color: rgb(197, 213, 264);
+}
+.login-sign-nav-btn a{
+    text-decoration: none;
+    font-size: 20px;
+    color: rgb(197, 213, 264);
+    width: 90px;
+    display: block;
+    height: 30px;
+    border-radius: 5px;
+    text-align: center;
+}
+.login-sign-nav-btn a:hover{
+    color:rgb(60, 136, 126);
+    
+}

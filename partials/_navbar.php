@@ -12,6 +12,7 @@ echo '<header>
             </ul>
         </div>
         <div id="nav-search">
+        <ul><li class="login-sign-nav-btn"> <button><a href="./login.php">Log In</a></button><button><a href="./signup.php">Sign Up</a></button></li></ul>
             <input id="search-input" type="text" placeholder="Search">
             <button id="search-btn">Search</button>
         </div>
