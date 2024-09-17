@@ -53,8 +53,9 @@ img{
 
 .lets-go a{
     text-decoration: none;
-    color: rgb(197,213,264);
-    font-size: 20px;
+    color: rgb(197, 213, 264);
+    font-size: 22px;
+    display: block;
 }
 .lets-go:hover{
     background-color:rgb(57, 124, 115);

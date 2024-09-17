@@ -25,23 +25,29 @@ include './partials/_connection.php';
                 $category_name = $_GET['category_name'];
                 $category_id = $_GET['category_id'];
 
-                $sql = 'select * from categories where category_name="' . $category_name . '" and category_id=' . $category_id;
+// fetching category name and description and showing on category page for questions showing:
+
+                $sql = 'select * from categories where category_name="'.$category_name.'" and category_id="'.$category_id.'"';
                 $query = mysqli_query($connect, $sql);
 
                 if ($query) {
 
                     while ($row = mysqli_fetch_assoc($query)) {
+
                         echo '<div class="topic-wrap">
                                         <h1>' . $row['category_name'] . '</h1>
                                         <h4>About:</h4>
                                         <p>' . $row['category_description'] . '</p>
                                 </div>';
+
                     }
                 } else {
                     echo 'unable to run cat name query';
                 }
 
-                $sql_question = 'select * from questions where category_id=' . $category_id;
+// fetching questions of category:
+
+                $sql_question = 'select * from questions where category_id="'.$category_id.'"';
 
                 $query_question = mysqli_query($connect, $sql_question);
 
@@ -50,6 +56,7 @@ include './partials/_connection.php';
                     $num_row = mysqli_num_rows($query_question);
 
                     if ($num_row > 0) {
+
                         echo '<div class="ask-question">
                             <form action="./category.php" method="post">
                                 <label for="question-area">Ask Question</label>
@@ -57,6 +64,8 @@ include './partials/_connection.php';
                                 <button type="submit" class="question-ask-btn">Ask</button>
                             </form>
                         </div>';
+
+
                         while ($data = mysqli_fetch_assoc($query_question)) {
 
                             $date_of_asked=$data['date_of_asked'];
@@ -89,6 +98,7 @@ include './partials/_connection.php';
                             }
 
                         }
+
                     } else {
                         echo '<div class="ask-question">
                             <form action="./category.php" method="post">
@@ -99,9 +109,11 @@ include './partials/_connection.php';
                         </div>';
                         echo '<h2>No question : Be the one to ask</h2>';
                     }
+
                 } else {
-                    echo 'question fetchiunf failed';
+                    echo 'question fetching failed';
                 }
+                
             } else {
                 echo 'sorry unable to connect.';
             }

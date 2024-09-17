@@ -1,11 +1,22 @@
 <?php
 include './partials/_connection.php';
-$submitted=false;
-$server_issue=false;
-$empty_field=false;
-$wrong_password=false;
-$duplicate=false;
-$database_connection=false;
+$submitted = false;
+$server_issue = false;
+$empty_field = false;
+$wrong_password = false;
+$duplicate = false;
+$database_connection = false;
+
+function user_id_generator()
+{
+    $str_result = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+    $unique_user_id = substr(
+        str_shuffle($str_result),
+        0,
+        7
+    );
+    return $unique_user_id;
+}
 
 if ($connect) {
     if ($_SERVER['REQUEST_METHOD'] == "POST") {
@@ -20,23 +31,65 @@ if ($connect) {
             $empty_field = true;
         } else {
             if ($password == $cpassword) {
-                $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-                $signup_sql = 'insert into users (first_name,last_name,user_email,user_password) values ("' . $fname . '","' . $lname . '","' . $email . '","' . $hashed_password . '")';
+
+                $user_id = user_id_generator();
+
+                $user_id_sql = 'select user_id from users';
+
                 try {
-                    $signup_query = mysqli_query($connect, $signup_sql);
-                    if ($signup_query) {
-                        $submitted = true;
+
+                    $user_id_query = mysqli_query($connect, $user_id_sql);
+                    while ($user_ids = mysqli_fetch_assoc($user_id_query)) {
+                        if ($user_id == $user_ids) {
+
+                            $user_id = user_id_generator();
+                        } else {
+
+                            $user_id = $user_id;
+                        }
                     }
                 } catch (mysqli_sql_exception) {
+
+                    echo 'Some error occured please try again later';
+                }
+
+
+
+
+
+                $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
+                $signup_sql = 'insert into users (user_id,first_name,last_name,user_email,user_password) values ("' . $user_id . '","' . $fname . '","' . $lname . '","' . $email . '","' . $hashed_password . '")';
+
+                try {
+
+                    $signup_query = mysqli_query($connect, $signup_sql);
+
+                    if ($signup_query) {
+
+                        $submitted = true;
+
+                        $_POST['signup-fname'] = "";
+                        $_POST['signup-lname'] = "";
+                        $_POST['signup-email'] = "";
+                        $_POST['signup-password'] = "";
+                        $_POST['signup-cpassword'] = "";
+                    }
+                } catch (mysqli_sql_exception) {
+
                     echo mysqli_error($connect);
                     $duplicate = true;
                 }
             } else {
+
                 $wrong_password = true;
             }
         }
-    } 
-}else{$database_connection=true;}
+    }
+} else {
+
+    $database_connection = true;
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -61,7 +114,7 @@ if ($connect) {
 
                 <form action="./signup.php" method="POST">
                     <?php
-                    if($database_connection==true){
+                    if ($database_connection == true) {
                         echo '<h3 class="stop">Sorry! we are facing some technical issue connection</h3>';
                     } elseif ($submitted == true) {
                         echo '<h3 class="go">Signed Up! now you can log in.</h3>';
