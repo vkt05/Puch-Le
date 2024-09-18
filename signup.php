@@ -27,7 +27,7 @@ if ($connect) {
         $password = $_POST['signup-password'];
         $cpassword = $_POST['signup-cpassword'];
 
-        if ($fname == "" | $lname == "" | $email == "" | $password == "") {
+        if ($fname == "" || $lname == "" || $email == "" || $password == "") {
             $empty_field = true;
         } else {
             if ($password == $cpassword) {
@@ -43,6 +43,7 @@ if ($connect) {
                         if ($user_id == $user_ids) {
 
                             $user_id = user_id_generator();
+
                         } else {
 
                             $user_id = $user_id;
@@ -75,9 +76,9 @@ if ($connect) {
                         $_POST['signup-password'] = "";
                         $_POST['signup-cpassword'] = "";
                     }
+
                 } catch (mysqli_sql_exception) {
 
-                    echo mysqli_error($connect);
                     $duplicate = true;
                 }
             } else {
