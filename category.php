@@ -1,6 +1,7 @@
 <?php
 include './partials/_connection.php';
-
+session_start();
+$question_added=false;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -8,7 +9,7 @@ include './partials/_connection.php';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thread</title>
+    <title><?php $category_name = $_GET['category_name'];  echo $category_name;?></title>
     <link rel="stylesheet" href="./public/stylesheets/basic.css">
     <link rel="stylesheet" href="./public/stylesheets/navbar.css">
     <link rel="stylesheet" href="./public/stylesheets/footer.css">
@@ -20,8 +21,62 @@ include './partials/_connection.php';
         <?php include './partials/_navbar.php'; ?>
         <div class="main-wrap">
             <?php
+
+            function question_id_generator()
+            {
+                $str_result = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+                $unique_question_id = substr(
+                    str_shuffle($str_result),
+                    0,
+                    7
+                );
+                return $unique_question_id;
+            }
+
             if ($connect) {
 
+// Getting data from form to submit questions.
+
+                if($_SERVER['REQUEST_METHOD']=="POST"){
+
+                    $question_id = question_id_generator();
+
+                    $question_id_sql = 'select question_id from questions';
+
+                    try {
+
+                     $question_id_query = mysqli_query($connect,$question_id_sql);
+                     while ($question_ids = mysqli_fetch_assoc($question_id_query)) {
+                         if ($question_id == $question_ids) {
+
+                            $question_id = question_id_generator();
+
+                            } else {
+                             $question_id = $question_id;
+                            }
+                        }
+                    } catch (mysqli_sql_exception) {
+
+                    echo 'Some error occured please try again later';
+                    }
+
+                    $question=$_POST['question-area'];
+                    $category_id = $_GET['category_id'];
+                    $userId=$_SESSION['userId'];
+                    $question_sql='insert into questions (user_id,category_id,question_id,question) values("'.$userId.'","'.$category_id.'","'.$question_id.'","'.$question.'")';
+                    $question_query=mysqli_query($connect,$question_sql);
+                    if ($question_query) {
+                        $question_added=true;
+                    }else{
+                        echo mysqli_error($connect);
+                    }
+
+                }
+
+
+                if ($_SERVER['REQUEST_URI']=='/PuchLe/category.php') {
+                    header('location: ./categories.php');
+                }else{
                 $category_name = $_GET['category_name'];
                 $category_id = $_GET['category_id'];
 
@@ -29,11 +84,9 @@ include './partials/_connection.php';
 
                 $sql = 'select * from categories where category_name="'.$category_name.'" and category_id="'.$category_id.'"';
                 $query = mysqli_query($connect, $sql);
-
                 if ($query) {
 
                     while ($row = mysqli_fetch_assoc($query)) {
-
                         echo '<div class="topic-wrap">
                                         <h1>' . $row['category_name'] . '</h1>
                                         <h4>About:</h4>
@@ -57,14 +110,21 @@ include './partials/_connection.php';
 
                     if ($num_row > 0) {
 
-                        echo '<div class="ask-question">
-                            <form action="./category.php" method="post">
-                                <label for="question-area">Ask Question</label>
-                                <textarea name="question-area" id="question-area" placeholder="Enter your question here."></textarea>
-                                <button type="submit" class="question-ask-btn">Ask</button>
-                            </form>
-                        </div>';
+                        if (isset($_SESSION['name']) && isset($_SESSION['userId'])) {
+                            if($question_added==true){
+                                echo '<div><h3>Your question is added.</h3>';
+                            }
 
+                            echo '<div class="ask-question">
+                                 <form action="/PuchLe/category.php?category_name='.$category_name.'&category_id='.$category_id.'" method="POST">
+                                    <label for="question-area">Ask Question</label>
+                                    <textarea name="question-area" id="question-area" placeholder="Enter your question here."></textarea>
+                                    <button type="submit" class="question-ask-btn">Ask</button>
+                                </form>
+                            </div>';
+                        } else {
+                            echo'<div><h3>You are not logged in please login to ask question.</h3></div>';
+                        }
 
                         while ($data = mysqli_fetch_assoc($query_question)) {
 
@@ -72,7 +132,7 @@ include './partials/_connection.php';
                             $question=$data['question'];
                             $question_id=$data['question_id'];
 
-                            $user_sql='select * from users where user_id='.$data['user_id'];
+                            $user_sql='select * from users where user_id="'.$data['user_id'].'"';
 
                             $user_query=mysqli_query($connect,$user_sql);
 
@@ -100,19 +160,28 @@ include './partials/_connection.php';
                         }
 
                     } else {
-                        echo '<div class="ask-question">
-                            <form action="./category.php" method="post">
-                                <label for="question-area">Ask Question</label>
-                                <textarea name="question-area" id="question-area" placeholder="Enter your question here."></textarea>
-                                <button type="submit" class="question-ask-btn">Ask</button>
-                            </form>
-                        </div>';
-                        echo '<h2>No question : Be the one to ask</h2>';
+                        if (isset($_SESSION['name']) && isset($_SESSION['userId'])) {
+                            if($question_added){
+                                echo '<div><h3>Your question is added.</h3>';
+                            }
+                            echo '<div class="ask-question">
+                                <form action="/PuchLe/category.php?category_name='.$category_name.'&category_id='.$category_id.'" method="POST">
+                                    <label for="question-area">Ask Question</label>
+                                    <textarea name="question-area" id="question-area" placeholder="Enter your question here."></textarea>
+                                    <button type="submit" class="question-ask-btn">Ask</button>
+                                </form>
+                            </div>';
+                            echo '<h2>No question : Be the one to ask</h2>';
+                        }
+                        else {
+                            echo'<div><h3>You are not logged in please login to ask question.</h3></div>';
+                        }
                     }
 
                 } else {
                     echo 'question fetching failed';
                 }
+            }
                 
             } else {
                 echo 'sorry unable to connect.';
