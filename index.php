@@ -1,3 +1,4 @@
+<?php session_start();?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -40,7 +41,11 @@
                             <li>LogIn to PucchLe by clicking on login button.</li>
                             <li> Go to categories tab.</li>
                             <li> Now you can ask or reply an answer for any question.</li>
-                            <li class="login-sign-home-btn"> <button><a href="./login.php">Log In</a></button><button><a href="./signup.php">Sign Up</a></button></li>
+                            <?php
+                            if (!isset($_SESSION['name']) && !isset($_SESSION['userId'])) {
+                                echo '<li class="login-sign-home-btn"> <button><a href="./login.php">Log In</a></button><button><a href="./signup.php">Sign Up</a></button></li>';
+                             }
+                            ?>
                         </ol>
                         </p>
                     </div>

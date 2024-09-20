@@ -1,4 +1,5 @@
 <?php
+// session_start();
 echo '<header>
     <nav>
         <div id="logo">
@@ -11,9 +12,14 @@ echo '<header>
                 <li><a href="/PuchLe/contact.php">Contact Us</a></li>
             </ul>
         </div>
-        <div id="nav-search">
-        <ul><li class="login-sign-nav-btn"> <button><a href="./login.php">Log In</a></button><button><a href="./signup.php">Sign Up</a></button></li></ul>
-            <input id="search-input" type="text" placeholder="Search">
+        <div id="nav-search">';
+        if (!isset($_SESSION['name']) && !isset($_SESSION['userId'])) {
+           echo '<ul><li class="login-sign-nav-btn"> <button><a href="./login.php">Log In</a></button><button><a href="./signup.php">Sign Up</a></button></li></ul>';
+        }else{
+            echo '<ul><li class="login-sign-nav-btn"> <button><a href="./logout.php">Log Out</a></button></li></ul>';
+        }
+        echo '<form action="./search.php?" method="GET" id="nav-form">
+            <input name="search_query" id="search-input" type="text" placeholder="Search">
             <button id="search-btn">Search</button>
         </div>
     </nav>

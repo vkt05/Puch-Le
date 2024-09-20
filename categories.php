@@ -1,5 +1,6 @@
 <?php
 include './partials/_connection.php';
+session_start();
 $connectionErr = false;
 
 ?>

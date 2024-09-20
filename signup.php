@@ -1,5 +1,6 @@
 <?php
 include './partials/_connection.php';
+session_start();
 $submitted = false;
 $server_issue = false;
 $empty_field = false;
@@ -112,8 +113,8 @@ if ($connect) {
         <div class="login-signup">
 
             <div class="form-wrap">
-
-                <form action="./signup.php" method="POST">
+            <form></form>
+                <form action="./signup.php" method="POST" id="login-signup-form">
                     <?php
                     if ($database_connection == true) {
                         echo '<h3 class="stop">Sorry! we are facing some technical issue connection</h3>';
@@ -130,27 +131,27 @@ if ($connect) {
                     <h1>Sign Up</h1>
                     <div class="login-signup-input">
                         <label for="signup-fname">First Name</label>
-                        <input type="text" placeholder="Enter your first name" name="signup-fname" id="login-signup-email">
+                        <input type="text" placeholder="Enter your first name" name="signup-fname" class="login-signup-email">
                     </div>
                     <div class="login-signup-input">
                         <label for="signup-lname">Last Name</label>
-                        <input type="text" placeholder="Enter your last name" name="signup-lname" id="login-signup-email">
+                        <input type="text" placeholder="Enter your last name" name="signup-lname" class="login-signup-email">
                     </div>
                     <div class="login-signup-input">
                         <label for="signup-email">Email</label>
-                        <input type="email" placeholder="Enter your email" name="signup-email" id="login-signup-email">
+                        <input type="email" placeholder="Enter your email" name="signup-email" class="login-signup-email">
                     </div>
                     <div class="login-signup-input">
                         <label for="signup-password">Password</label>
-                        <input type="password" placeholder="Enter your password" name="signup-password" id="login-signup-email">
+                        <input type="password" placeholder="Enter your password" name="signup-password" class="login-signup-email">
                     </div>
                     <div class="login-signup-input">
                         <label for="signup-cpassword">Confirm Password</label>
-                        <input type="password" placeholder="Confirm password" name="signup-cpassword" id="login-signup-email">
+                        <input type="password" placeholder="Confirm password" name="signup-cpassword" class="login-signup-email">
                     </div>
                     <button class="login-signup-send">Sign Up</button>
+                </form>
             </div>
-            </form>
         </div>
         <?php include './partials/_footer.php'; ?>
     </div>

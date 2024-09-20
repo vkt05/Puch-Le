@@ -116,6 +116,7 @@ $question_added=false;
                             }
 
                             echo '<div class="ask-question">
+                            <form></form>
                                  <form action="/PuchLe/category.php?category_name='.$category_name.'&category_id='.$category_id.'" method="POST">
                                     <label for="question-area">Ask Question</label>
                                     <textarea name="question-area" id="question-area" placeholder="Enter your question here."></textarea>
@@ -165,6 +166,7 @@ $question_added=false;
                                 echo '<div><h3>Your question is added.</h3>';
                             }
                             echo '<div class="ask-question">
+                            <form></form>
                                 <form action="/PuchLe/category.php?category_name='.$category_name.'&category_id='.$category_id.'" method="POST">
                                     <label for="question-area">Ask Question</label>
                                     <textarea name="question-area" id="question-area" placeholder="Enter your question here."></textarea>

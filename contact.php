@@ -1,3 +1,4 @@
+<?php session_start();?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,6 +17,7 @@
         <?php include './partials/_navbar.php'; ?>
         <div class="contact">
             <div class="form-wrap">
+        <form></form>
                 <form action="" method="post">
                     <h1>Contact Us</h1>
                     <div class="contact-input">

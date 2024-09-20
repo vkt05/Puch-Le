@@ -76,7 +76,8 @@ if ($connect) {
         <?php include './partials/_navbar.php'; ?>
         <div class="login-signup">
             <div class="form-wrap">
-                <form action="./login.php" method="POST">
+            <form></form>
+                <form action="./login.php" method="POST" id="login-signup-form">
                     <?php
                     if ($database_connection == true) {
                         echo '<h3 class="stop">Sorry! we are facing some technical issue.</h3>';
@@ -89,15 +90,15 @@ if ($connect) {
                     <h1>Log In</h1>
                     <div class="login-signup-input">
                         <label for="login-email">Email</label>
-                        <input type="email" placeholder="Enter your email" name="login-email" id="login-signup-email">
+                        <input type="email" placeholder="Enter your email" name="login-email" class="login-signup-email">
                     </div>
                     <div class="login-signup-input">
                         <label for="login-password">Password</label>
-                        <input type="password" placeholder="Enter your password" name="login-password" id="login-signup-email">
+                        <input type="password" placeholder="Enter your password" name="login-password" class="login-signup-email">
                     </div>
                     <button class="login-signup-send">Log In</button>
+                </form>
             </div>
-            </form>
         </div>
         <?php include './partials/_footer.php'; ?>
     </div>
