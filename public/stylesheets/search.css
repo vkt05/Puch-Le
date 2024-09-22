@@ -7,9 +7,11 @@
 }
 #search-for-wrap h1{
     display: inline;
+    color: rgb(60,136,126);
 }
 #search-for-wrap h1 em{
     font-weight: 100;
+    color: rgb(197,213,264);
 }
 .question-wrap{
     display: flex;
@@ -46,4 +48,7 @@
 }
 .question-a:hover{
     color: rgb(60,136,126);
+}
+h2{
+    color: rgb(189, 20, 20);
 }

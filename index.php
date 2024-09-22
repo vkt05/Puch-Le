@@ -29,16 +29,16 @@
                     </div>
                     <div class="text-wrap">
                         <h1>What is PuchhLe ?</h1>
-                        <p>PucchLe is forum where anyone can ask questions about <strong>WEB DEVELOPMENT</strong> and anyone can answer these questions which helps in troubleshooting problems more quickly.</p>
+                        <p>puchhLe is forum where anyone can ask questions about <strong>WEB DEVELOPMENT</strong> and anyone can answer these questions which helps in troubleshooting problems more quickly.</p>
                     </div>
                 </div>
 
                 <div class="section">
                     <div class="text-wrap">
-                        <h1>How to use PucchLe ?</h1>
+                        <h1>How to use PuchhLe ?</h1>
                         <p>
                         <ol>
-                            <li>LogIn to PucchLe by clicking on login button.</li>
+                            <li>LogIn to puchhLe by clicking on login button.</li>
                             <li> Go to categories tab.</li>
                             <li> Now you can ask or reply an answer for any question.</li>
                             <?php

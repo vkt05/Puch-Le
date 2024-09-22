@@ -74,7 +74,7 @@ $question_added=false;
                 }
 
 
-                if ($_SERVER['REQUEST_URI']=='/PuchLe/category.php') {
+                if ($_SERVER['REQUEST_URI']=='/PuchhLe/category.php') {
                     header('location: ./categories.php');
                 }else{
                 $category_name = $_GET['category_name'];
@@ -117,7 +117,7 @@ $question_added=false;
 
                             echo '<div class="ask-question">
                             <form></form>
-                                 <form action="/PuchLe/category.php?category_name='.$category_name.'&category_id='.$category_id.'" method="POST">
+                                 <form action="/PuchhLe/category.php?category_name='.$category_name.'&category_id='.$category_id.'" method="POST">
                                     <label for="question-area">Ask Question</label>
                                     <textarea name="question-area" id="question-area" placeholder="Enter your question here."></textarea>
                                     <button type="submit" class="question-ask-btn">Ask</button>
@@ -150,7 +150,7 @@ $question_added=false;
                                                 <h3>'.$user_fname.' '.$user_lname.'</h3>
                                                 <p>'.$date_of_asked.'</p>
                                             </div>
-                                            <p class="question"><a class="question-a" href="./question?ques_id='.$question_id.'">'.$question.'</a></p>
+                                            <p class="question"><a class="question-a" href="./question.php?ques_id='.$question_id.'">'.$question.'</a></p>
                                         </div>
                                     </div>';
                             }
@@ -167,7 +167,7 @@ $question_added=false;
                             }
                             echo '<div class="ask-question">
                             <form></form>
-                                <form action="/PuchLe/category.php?category_name='.$category_name.'&category_id='.$category_id.'" method="POST">
+                                <form action="/PuchhLe/category.php?category_name='.$category_name.'&category_id='.$category_id.'" method="POST">
                                     <label for="question-area">Ask Question</label>
                                     <textarea name="question-area" id="question-area" placeholder="Enter your question here."></textarea>
                                     <button type="submit" class="question-ask-btn">Ask</button>

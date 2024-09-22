@@ -62,7 +62,7 @@ function sanitize($input){
                         </div>';
             }
         }else {
-            echo 'NOT FOUND';
+            echo '<h2>NOT FOUND</h2>';
         }
         }
 
