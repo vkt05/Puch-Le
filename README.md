@@ -7,7 +7,7 @@ how to use?
 first you have to login and then you can go to categories section by click on navbar (At top) then you can choose which category related question you are going to ask select that category and ask your question.
 
 *************** FOR DEVELOPERS WHO WANT TO USE THIS AS A PROJECT ***************
-
+NOTE: make sure when you pull repo. please create a folder named as "PuchhLe" and pull everything inside it or customise form actions and hrefs please.
 -> It is open to use no need to pay anything.
 -> Just follow these steps to configure thyis app:
     1. Pull repo. in your folder and open in code editor.
