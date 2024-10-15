@@ -6,7 +6,7 @@ puchh_le is a forum application in which you can ask web development related que
 how to use?
 first you have to login and then you can go to categories section by click on navbar (At top) then you can choose which category related question you are going to ask select that category and ask your question.
 
-*************** FOR DEVELOPERS WHO WNAT TO USE THIS AS A PROJECT ***************
+*************** FOR DEVELOPERS WHO WANT TO USE THIS AS A PROJECT ***************
 
 -> It is open to use no need to pay anything.
 -> Just follow these steps to configure thyis app:
